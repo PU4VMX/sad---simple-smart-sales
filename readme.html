@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>Documenta&ccedil;&atilde;o da Aplica&ccedil;&atilde;o</title>
+            <style>
+/* From extension vscode.github */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+.vscode-dark img[src$=\#gh-light-mode-only],
+.vscode-light img[src$=\#gh-dark-mode-only],
+.vscode-high-contrast:not(.vscode-high-contrast-light) img[src$=\#gh-light-mode-only],
+.vscode-high-contrast-light img[src$=\#gh-dark-mode-only] {
+	display: none;
+}
+
+</style>
+            
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item {
+    list-style-type: none;
+}
+
+.task-list-item-checkbox {
+    margin-left: -20px;
+    vertical-align: middle;
+    pointer-events: none;
+}
+</style>
+<style>
+:root {
+  --color-note: #0969da;
+  --color-tip: #1a7f37;
+  --color-warning: #9a6700;
+  --color-severe: #bc4c00;
+  --color-caution: #d1242f;
+  --color-important: #8250df;
+}
+
+</style>
+<style>
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-note: #2f81f7;
+    --color-tip: #3fb950;
+    --color-warning: #d29922;
+    --color-severe: #db6d28;
+    --color-caution: #f85149;
+    --color-important: #a371f7;
+  }
+}
+
+</style>
+<style>
+.markdown-alert {
+  padding: 0.5rem 1rem;
+  margin-bottom: 16px;
+  color: inherit;
+  border-left: .25em solid #888;
+}
+
+.markdown-alert>:first-child {
+  margin-top: 0
+}
+
+.markdown-alert>:last-child {
+  margin-bottom: 0
+}
+
+.markdown-alert .markdown-alert-title {
+  display: flex;
+  font-weight: 500;
+  align-items: center;
+  line-height: 1
+}
+
+.markdown-alert .markdown-alert-title .octicon {
+  margin-right: 0.5rem;
+  display: inline-block;
+  overflow: visible !important;
+  vertical-align: text-bottom;
+  fill: currentColor;
+}
+
+.markdown-alert.markdown-alert-note {
+  border-left-color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-note .markdown-alert-title {
+  color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-important {
+  border-left-color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-important .markdown-alert-title {
+  color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-warning {
+  border-left-color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-warning .markdown-alert-title {
+  color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-tip {
+  border-left-color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-tip .markdown-alert-title {
+  color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-caution {
+  border-left-color: var(--color-caution);
+}
+
+.markdown-alert.markdown-alert-caution .markdown-alert-title {
+  color: var(--color-caution);
+}
+
+</style>
+        
+        </head>
+        <body class="vscode-body vscode-light">
+            <h2 id="documentação-da-aplicação">Documentação da Aplicação</h2>
+<h3 id="vinicius-marques-santos-silva-0070356">Vinicius Marques Santos Silva 0070356</h3>
+<h4 id="descrição-geral">Descrição Geral</h4>
+<p>Esta aplicação é uma API construída com <strong>FastAPI</strong>, que interage com um banco de dados PostgreSQL para fornecer funcionalidades relacionadas à gestão de <strong>clientes</strong>, <strong>vendas</strong> e <strong>produtos</strong>. A aplicação oferece diversas rotas para consultar clientes e produtos, destacando aqueles com mais compras realizadas. Utiliza princípios de design orientados a objetos e arquitetura baseada em MVC (Model-View-Controller), mantendo uma estrutura modular que permite fácil manutenção e expansão.</p>
+<h4 id="estrutura-de-diretórios">Estrutura de Diretórios</h4>
+<pre><code class="language-plaintext">├── main.py
+├── utils/
+│   └── basemodel.py
+├── Cliente/
+│   ├── cliente_controller.py
+│   ├── cliente_model.py
+│   └── cliente_view.py
+├── Produto/
+│   ├── produto_controller.py
+│   ├── produto_model.py
+│   └── produto_view.py
+├── Venda/
+│   ├── venda_controller.py
+│   ├── venda_model.py
+│   └── venda_view.py
+└── static/
+    └── index.html
+</code></pre>
+<h4 id="descrição-dos-principais-componentes">Descrição dos Principais Componentes</h4>
+<ol>
+<li>
+<p><strong>Cliente Model</strong> (<code>cliente_model.py</code>), <strong>Produto Model</strong> (<code>produto_model.py</code>), <strong>Venda Model</strong> (<code>venda_model.py</code>)</p>
+<ul>
+<li>Cada um desses arquivos define o modelo de dados correspondente, utilizando <strong>Pydantic</strong>.</li>
+<li>Estes modelos são responsáveis por representar as entidades de cliente, produto e venda e validam os dados para garantir integridade.</li>
+<li>As classes <strong>Cliente</strong>, <strong>Produto</strong> e <strong>Venda</strong> estendem <code>BaseSchema</code>, que oferece métodos para conversão entre dicionários e JSON.</li>
+</ul>
+</li>
+<li>
+<p><strong>Cliente Controller</strong> (<code>cliente_controller.py</code>), <strong>Produto Controller</strong> (<code>produto_controller.py</code>), <strong>Venda Controller</strong> (<code>venda_controller.py</code>)</p>
+<ul>
+<li>Cada controlador implementa a lógica de negócios associada à entidade correspondente.</li>
+<li>Métodos como <code>get_all()</code> e <code>mais_compraram()</code> no <strong>ClienteController</strong>, ou métodos equivalentes no <strong>ProdutoController</strong> e <strong>VendaController</strong>, manipulam dados no banco de dados e retornam informações pertinentes à lógica de cada domínio.</li>
+</ul>
+</li>
+<li>
+<p><strong>Banco de Dados</strong> (<code>connector/database.py</code>)</p>
+<ul>
+<li>Implementa a classe <code>Database</code>, que realiza operações de CRUD (Create, Read, Update, Delete) no banco de dados, utilizando <strong>psycopg2</strong>.</li>
+<li>Oferece métodos como <code>execute_query()</code>, <code>fetchall()</code>, <code>fetchone()</code>, e <code>insert_data()</code> para interação segura com o banco de dados.</li>
+</ul>
+</li>
+<li>
+<p><strong>Visão</strong> (<code>cliente_view.py</code>, <code>produto_view.py</code>, <code>venda_view.py</code>)</p>
+<ul>
+<li>Define as rotas da API relacionadas aos clientes, produtos e vendas utilizando <strong>FastAPI</strong>.</li>
+<li>Cada módulo tem suas rotas específicas, como:
+<ul>
+<li><code>GET /clientes</code>: Retorna todos os clientes.</li>
+<li><code>GET /clientes/mais-compras</code>: Retorna os 10 clientes que mais compraram.</li>
+<li><code>GET /produtos</code>: Retorna todos os produtos.</li>
+<li><code>GET /vendas</code>: Retorna todas as vendas.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Configuração do Servidor</strong> (<code>main.py</code>)</p>
+<ul>
+<li>Define a aplicação FastAPI, incluindo os routers das diferentes views (clientes, produtos, vendas).</li>
+<li>Configura CORS e fornece a estrutura para servir arquivos estáticos e o HTML principal.</li>
+</ul>
+</li>
+</ol>
+<h4 id="princípios-do-solid-aplicados">Princípios do SOLID Aplicados</h4>
+<p>A aplicação aplica os seguintes princípios do SOLID:</p>
+<ol>
+<li>
+<p><strong>Single Responsibility Principle (SRP) - Princípio da Responsabilidade Única</strong></p>
+<ul>
+<li>Cada classe tem uma responsabilidade bem definida. Por exemplo:
+<ul>
+<li>A classe <code>Cliente</code> é responsável apenas por representar o modelo de dados de clientes.</li>
+<li>O <code>Produto</code> e o <code>Venda</code> seguem o mesmo princípio, representando seus respectivos modelos de dados.</li>
+<li>O <code>ClienteController</code> cuida da lógica de negócios relacionada a clientes, enquanto o <code>ProdutoController</code> e o <code>VendaController</code> cuidam das lógicas de produto e venda, respectivamente.</li>
+<li>A classe <code>Database</code> lida com a comunicação com o banco de dados e não é responsável por lógica de negócios ou manipulação de dados específicos.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Open/Closed Principle (OCP) - Princípio do Aberto/Fechado</strong></p>
+<ul>
+<li>O código está aberto para extensão, mas fechado para modificação. Por exemplo:
+<ul>
+<li>É possível adicionar novos controladores e modelos (como os de produto e venda) sem modificar as classes existentes. Apenas estendemos a estrutura com novos componentes, como o <code>ProdutoController</code> ou <code>VendaController</code>, sem alterar os componentes principais já implementados.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Liskov Substitution Principle (LSP) - Princípio da Substituição de Liskov</strong></p>
+<ul>
+<li>O modelo <code>BaseSchema</code> estende <code>Pydantic.BaseModel</code> e, consequentemente, garante que qualquer classe que herde <code>BaseSchema</code> (como <code>Cliente</code>, <code>Produto</code> e <code>Venda</code>) possa ser tratada como uma instância de <code>BaseModel</code>, garantindo consistência na substituição ou extensão dos modelos de dados.</li>
+</ul>
+</li>
+<li>
+<p><strong>Interface Segregation Principle (ISP) - Princípio da Segregação de Interfaces</strong></p>
+<ul>
+<li>As interfaces (no contexto da aplicação, as classes de serviço como <code>Database</code> e os controladores) são projetadas de forma que cada uma tem uma função bem definida e especializada. Por exemplo:
+<ul>
+<li>O <code>Database</code> oferece métodos como <code>fetchall()</code> e <code>execute_query()</code> que lidam diretamente com o banco de dados, sem incluir outras responsabilidades fora do seu escopo.</li>
+<li>O <code>ClienteController</code> fornece métodos focados na manipulação de dados dos clientes, e o <code>ProdutoController</code> e <code>VendaController</code> seguem a mesma filosofia para seus respectivos domínios.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Dependency Inversion Principle (DIP) - Princípio da Inversão de Dependências</strong></p>
+<ul>
+<li>A classe <code>ClienteController</code>, <code>ProdutoController</code> e <code>VendaController</code> dependem de abstrações (o objeto <code>database</code>) ao invés de dependerem de implementações concretas. Isso permite a substituição do banco de dados por outras fontes de dados ou implementações sem afetar o restante do código.</li>
+<li>O código é flexível e facilmente testável, pois as dependências podem ser injetadas de forma dinâmica.</li>
+</ul>
+</li>
+</ol>
+<h4 id="exemplo-de-uso">Exemplo de Uso</h4>
+<ol>
+<li>
+<p><strong>Iniciar o Servidor</strong>: Execute o comando para rodar o servidor FastAPI:</p>
+<pre><code class="language-bash">uvicorn main:app --reload
+</code></pre>
+</li>
+<li>
+<p><strong>Rotas da API</strong>:</p>
+<ul>
+<li><strong>Clientes</strong>:
+<ul>
+<li><code>GET /clientes</code>: Retorna todos os clientes.</li>
+<li><code>GET /clientes/mais-compras</code>: Retorna os 10 clientes que mais compraram.</li>
+</ul>
+</li>
+<li><strong>Produtos</strong>:
+<ul>
+<li><code>GET /produtos</code>: Retorna todos os produtos.</li>
+</ul>
+</li>
+<li><strong>Vendas</strong>:
+<ul>
+<li><code>GET /vendas</code>: Retorna todas as vendas.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Banco de Dados</strong>:</p>
+<ul>
+<li>As consultas SQL são feitas de forma segura, utilizando parâmetros e evitando SQL Injection.</li>
+<li>A classe <code>Database</code> abstrai as operações do banco de dados, permitindo modificações sem afetar o restante do código.</li>
+</ul>
+</li>
+</ol>
+<h4 id="considerações-finais">Considerações Finais</h4>
+<p>A aplicação segue as melhores práticas de design de software, adotando os princípios do SOLID para garantir um código modular, de fácil manutenção e extensão. A separação clara de responsabilidades, o uso de abstrações e a extensibilidade da arquitetura fazem com que este sistema seja escalável e fácil de adaptar a novos requisitos no futuro. Com a adição dos módulos de <strong>Produto</strong> e <strong>Venda</strong>, a aplicação se mantém organizada e pronta para suportar crescimento e novas funcionalidades.</p>
+
+            
+            
+        </body>
+        </html>
