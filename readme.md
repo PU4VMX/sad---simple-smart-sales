@@ -114,7 +114,7 @@ A estrutura do projeto é organizada de forma modular para facilitar a manutenç
 Clone o repositório do projeto para sua máquina local.
 
 ```bash
-git clone <URL_DO_REPOSITORIO>
+git clone https://github.com/PU4VMX/sad---simple-smart-sales.git
 cd <DIRETORIO_DO_REPOSITORIO>
 ```
 
